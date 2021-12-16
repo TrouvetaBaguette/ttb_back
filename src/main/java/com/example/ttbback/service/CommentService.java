@@ -10,28 +10,27 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.util.UUID;
 
+@Service
+@NoArgsConstructor
 public class CommentService {
 
-
     private CommentRepository repository;
-
     @Autowired
-    public CommentService(com.example.ttbback.repository.CommentRepository repository) {
+    public CommentService(CommentRepository repository) {
         this.repository = repository;
     }
-
     public Comment saveComment(Comment comment) {
         return repository.save(comment);
     }
-
-    public Comment getCommentById(UUID id) { return repository.findById(id); }
-
-    public Reply getReply(UUID id) { return repository.findReply(id); }
+    public Comment getCommentById(UUID id_comment) { return repository.findById(id_comment); }
 
     public void deleteComment(UUID id) {
         repository.deleteById(id);
     }
 
+
+    // public Reply getReply(UUID id) { return repository.findReply(id); }
+    /*
     public Comment updateBakery(Comment comment){
         Comment existingComment=repository.findById(comment.getId_comment());
         existingComment.setId_bakery(comment.getId_bakery());
@@ -45,6 +44,5 @@ public class CommentService {
         existingComment.setIfReply(comment.getIfReply());
         return repository.save(existingComment);
     }
-
-
+     */
 }

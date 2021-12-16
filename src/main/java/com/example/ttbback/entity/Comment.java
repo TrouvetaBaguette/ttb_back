@@ -20,7 +20,7 @@ public class Comment {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    UUID id_comment;
+    UUID id;
     UUID id_client;
     UUID id_bakery;
     UUID id_product;
@@ -30,6 +30,4 @@ public class Comment {
     String title;
     Date date;
     Boolean ifReply;
-
-
 }
