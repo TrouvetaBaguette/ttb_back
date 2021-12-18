@@ -5,8 +5,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.UUID;
 
@@ -16,7 +14,7 @@ import java.util.UUID;
 @Entity
 public class Reply {
     @Id
-    UUID id_comment;
+    UUID id;
     String content;
     Date date;
 
