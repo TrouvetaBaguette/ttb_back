@@ -1,5 +1,6 @@
 package com.example.ttbback.service;
 
+import com.example.ttbback.entity.Bakery;
 import com.example.ttbback.entity.Comment;
 import com.example.ttbback.entity.Reply;
 import com.example.ttbback.repository.CommentRepository;
@@ -24,6 +25,20 @@ public class CommentService {
     public Comment getCommentById(UUID id_comment) { return repository.findById(id_comment); }
     public void deleteComment(UUID id) {
         repository.deleteById(id);
+    }
+    public Comment updateComment(Comment comment){
+        Comment existingComment=repository.findById(comment.getId());
+        existingComment.setId_product(comment.getId_product());
+        existingComment.setId_client(comment.getId_client());
+        existingComment.setId_bakery(comment.getId_bakery());
+        existingComment.setDate(comment.getDate());
+        existingComment.setIfReply(comment.getIfReply());
+        existingComment.setId(comment.getId());
+        existingComment.setContent(comment.getContent());
+        existingComment.setNote(comment.getNote());
+        existingComment.setTitle(comment.getTitle());
+        existingComment.setNameProduct(comment.getNameProduct());
+        return repository.save(existingComment);
     }
 
 }
