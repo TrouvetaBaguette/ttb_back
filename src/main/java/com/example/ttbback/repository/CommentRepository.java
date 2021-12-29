@@ -12,4 +12,6 @@ public interface CommentRepository extends JpaRepository<Comment,Integer>, CrudR
 
     Comment findById(UUID id);
 
+    Comment findbyIDProdut(UUID id);
+
 }
