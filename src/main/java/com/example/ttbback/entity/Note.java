@@ -1,5 +1,6 @@
 package com.example.ttbback.entity;
 
+
 public enum Note {
     ZERO(0),
     UN(1),
@@ -17,4 +18,16 @@ public enum Note {
     public int getValue() {
         return value;
     }
+
+    public static Note parse(int valeur) {
+        Note note = null; // Default
+        for (Note stars : Note.values()) {
+            if (stars.getValue()==valeur) {
+                note = stars;
+                break;
+            }
+        }
+        return note;
+    }
+
 }
