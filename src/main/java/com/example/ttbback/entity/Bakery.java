@@ -27,4 +27,6 @@ public class Bakery {
     @OneToMany
     List<Product> unsolds;
 
+
+
 }

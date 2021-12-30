@@ -16,8 +16,8 @@ import java.util.Objects;
 @Entity
 public class Ingredient {
     @Id
-    String name;
-    String ingredient_quantity;
+    private String name;
+    private String ingredient_quantity;
 
 
     @Override

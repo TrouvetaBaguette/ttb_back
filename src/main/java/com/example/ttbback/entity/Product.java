@@ -29,8 +29,6 @@ public class Product {
     @OneToMany
     private List<Ingredient> ingredients = new ArrayList<>();
     private int product_quantity;
-    @OneToMany
-    private List<Comment> comments = new ArrayList<>();
 
 
 
