@@ -1,0 +1,84 @@
+@startuml
+'https://plantuml.com/class-diagram
+!include commons.style
+package com.ttb.app {
+    package entity{
+        class Bakery{
+            ~id: UUID
+            ~name: String
+            ~address: String
+            ~phonenumber: String
+            ~Insee: String
+            +addBakery(name: String, address: String, phonenumber: String, Insee : String) : Bakery
+            +updateBakery(name: String, address: String, phonenumber: String, Insee : String)
+            +deleteBakery(id: UUID)
+            +findById(id:UUID)
+        }
+
+        class Client{
+        ~id: UUID
+        ~name: String
+        ~address: String
+        +addBClient(name: String, address: String) : Client
+        +updateClient(name: String, address: String)
+        +deleteClient(id: UUID)
+        +findById(id:UUID)
+        }
+
+        class Comment{
+        ~id_comment: UUID
+        ~id_client: UUID
+        ~id_product: UUID
+        ~id_bakery: UUID
+        ~nameProduct: String
+        ~note: String
+        ~content: String
+        ~title: String
+        ~date: Date
+        ~ifReply: Boolean
+        +addComment(note: String, content: String, title: String): Comment
+        +updateComment(note: String, content: String, title: String)
+        +deleteComment(id_comment: UUID)
+        +findById(id : UUID)
+        }
+
+        class Ingredient{
+        ~id: UUID
+        ~name : String
+        ~ingredient_quantity : String
+        }
+
+        class Product{
+        ~id: UUID
+        ~label: String
+        ~id_bakery: int
+        ~weight: int
+        ~price: int
+        ~product_quantity: int
+        +addProduct(label: String, id_bakery: int, weight: int, price: int, product_quantity: int) : Product
+        +updateProduct(label: String, id_bakery: int, weight: int, price: int, product_quantity: int)
+        +deleteProduct(id : UUID)
+        +findById(id: UUID)
+        }
+
+        class Reply{
+        ~id: UUID
+        ~content: String
+        ~date: Date
+        +addReply(content: String,date: Date): Reply
+        +updateReply(id: UUID)
+        +deleteReply(id: UUID)
+        }
+    }
+    Bakery ..* Product
+    Product .* Ingredient
+    Comment ..> Product
+    Client ..> Comment
+    Bakery ..> Reply
+    Reply ..* Comment
+
+
+
+
+}
+@enduml

@@ -39,7 +39,5 @@ public class BakeryController {
     }
 
     @DeleteMapping("/bakery/delete/{id}")
-    public void deleteBakery(@PathVariable UUID id) {
-        service.deleteBakery( id);
-    }
+    public void deleteBakery(@PathVariable UUID id) { service.deleteBakery(id); }
 }
