@@ -30,9 +30,6 @@ public class CommentController {
         return this.service.getCommentById(id);
     }
 
-    @GetMapping("/commentByIdProduct/{id}")
-    public Comment findCommentByIdProduct(@PathVariable UUID id_product) { return this.service.getCommentByIdProduct(id_product); }
-
     @PutMapping("/comment/update")
     public Comment updateComment(@RequestBody Comment comment) {
         return service.updateComment(comment);
