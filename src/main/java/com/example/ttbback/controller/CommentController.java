@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:5050")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 public class CommentController {
 
