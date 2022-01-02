@@ -6,6 +6,7 @@ import com.example.ttbback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:8081")
@@ -22,6 +23,11 @@ public class ProductController {
     @PostMapping("/addProduct")
     public Product addProduct(@RequestBody Product product) {
         return service.saveProduct(product);
+    }
+
+    @GetMapping("/product")
+    public List<Product> listProduct() {
+        return service.getProduct();
     }
 
     @GetMapping("/productById/{id}")
