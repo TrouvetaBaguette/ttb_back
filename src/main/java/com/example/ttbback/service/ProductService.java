@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,6 +24,8 @@ public class ProductService {
         return repository.save(product);
     }
 
+    public List<Product> getProduct(){ return repository.findAll();}
+
     public Product getProductById(UUID id) { return repository.findById(id); }
 
     public Product getProductByLabel(String name) {
@@ -36,6 +39,7 @@ public class ProductService {
     public Product updateProduct(Product product){
         Product existingProduct= repository.findById(product.getId());
         existingProduct.setLabel(product.getLabel());
+        existingProduct.setPrice(product.getPrice());
         existingProduct.setWeight(product.getWeight());
         return repository.save(existingProduct);
     }
