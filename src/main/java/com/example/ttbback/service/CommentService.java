@@ -33,7 +33,6 @@ public class CommentService {
         existingComment.setId_client(comment.getId_client());
         existingComment.setId_bakery(comment.getId_bakery());
         existingComment.setDate(comment.getDate());
-        existingComment.setIfReply(comment.getIfReply());
         existingComment.setId(comment.getId());
         existingComment.setContent(comment.getContent());
         existingComment.setNote(comment.getNote());

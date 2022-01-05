@@ -69,13 +69,25 @@ package com.ttb.app {
         +updateReply(id: UUID)
         +deleteReply(id: UUID)
         }
+        class Unsold{
+        ~id: UUID
+        ~unsold: List<Product>
+        ~value: Double
+        +addUnsold(value:int,unsold:)
+        +deleteUnsold(id: UUID)
+        +setvalue(value:int)
+        +addProductToUnsold(product: Product)
+
+
+        }
     }
-    Bakery ..* Product
-    Product .* Ingredient
-    Comment ..> Product
+    Bakery "1..*"..*  Product
+    Product *."1..*" Ingredient
+    Comment "1..*"..* Product
     Client ..> Comment
     Bakery ..> Reply
-    Reply ..* Comment
+    Reply "1..1"..* Comment
+
 
 
 

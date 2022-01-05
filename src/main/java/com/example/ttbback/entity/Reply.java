@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Date;
 import java.util.UUID;
 
@@ -17,5 +18,6 @@ public class Reply {
     UUID id;
     String content;
     Date date;
-
+    @OneToOne
+    Comment comment;
 }

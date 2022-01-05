@@ -9,18 +9,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-public class ReplyControler {
+public class ReplyController {
 
     @Autowired
     private ReplyService service;
 
     @PostMapping("/addReply")
-    public Reply addComment(@RequestBody Reply reply) {
-        // appeler findById de comment
-        // faire un set de if reply
-        //updates de ce nouveau comment
-        
-        return this.service.saveReply(reply);
+    public Reply addReply(@RequestBody Reply reply) {
+        return service.saveReply(reply);
     }
 
     @DeleteMapping("/reply/delete/{id}")

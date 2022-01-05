@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.sql.Date;
 import java.util.UUID;
 
@@ -23,9 +24,10 @@ public class Comment {
     UUID id_bakery;
     UUID id_product;
     String nameProduct;
-    String note;
+    Note note;
     String content;
     String title;
     Date date;
-    Boolean ifReply;
+    @OneToOne
+    Reply reply;
 }
