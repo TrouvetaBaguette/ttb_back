@@ -32,8 +32,8 @@ public class ProductService {
         return repository.findByLabel(name);
     }
 
-    public void deleteProduct(UUID id) {
-        repository.deleteById(id);
+    public void deleteProduct(Product product) {
+        repository.deleteById(product);
     }
 
     public Product updateProduct(Product product){
