@@ -2,12 +2,14 @@ package com.example.ttbback.service;
 
 import com.example.ttbback.entity.Bakery;
 import com.example.ttbback.entity.Comment;
+import com.example.ttbback.entity.Note;
 import com.example.ttbback.entity.Reply;
 import com.example.ttbback.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service

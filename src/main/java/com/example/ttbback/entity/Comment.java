@@ -30,4 +30,8 @@ public class Comment {
     Date date;
     @OneToOne
     Reply reply;
+
+    public Note getNote() {
+        return note;
+    }
 }
