@@ -6,6 +6,7 @@ import com.example.ttbback.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:5050")
@@ -28,6 +29,11 @@ public class CommentController {
     @GetMapping("/commentById/{id}")
     public Comment findCommentById(@PathVariable UUID id) {
         return this.service.getCommentById(id);
+    }
+
+    @GetMapping("/commentAll/")
+    public List<Comment> findCommentAll() {
+        return this.service.getCommentByAll();
     }
 
     @PutMapping("/comment/update")

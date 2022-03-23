@@ -25,6 +25,8 @@ public class CommentService {
         return repository.save(comment);
     }
 
+    public List<Comment> getCommentByAll(){return repository.findAll();}
+
     public Comment getCommentById(UUID id_comment) { return repository.findById(id_comment); }
     public void deleteComment(UUID id) {
         repository.deleteById(id);

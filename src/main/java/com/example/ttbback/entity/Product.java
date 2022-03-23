@@ -2,6 +2,7 @@ package com.example.ttbback.entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 public class Product {
     @Id
@@ -24,8 +26,8 @@ public class Product {
     private UUID id;
     private String label;
     private int idbakery;
-    private int weight;
-    private int price;
+    private double weight;
+    private double price;
     @OneToMany
     private List<Ingredient> ingredients = new ArrayList<>();
     private int product_quantity;
