@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -26,20 +27,27 @@ public class ProductService {
         return repository.save(product);
     }
 
-    public Product getProductById(UUID id) { return repository.findById(id); }
+    public Product getProductById(UUID id) { return repository.findById(id).orElse(null); }
+
+    public List<Product> getAll(){ return repository.findAll();}
 
     public Product getProductByLabel(String name) {
-        return repository.findByLabel(name);
+        return repository.findByLabel(name).orElse(null);
     }
 
     public void deleteProduct(UUID id) {
-        repository.deleteById(id);
+        Product existArticle = repository.findById(id).orElse(null);
+        if(existArticle != null){
+            repository.deleteById(existArticle.getId());
+        }
     }
 
-    public Product updateProduct(Product product){
-        Product existingProduct= repository.findById(product.getId());
-        existingProduct.setLabel(product.getLabel());
-        existingProduct.setWeight(product.getWeight());
-        return repository.save(existingProduct);
+    public void updateProduct(Product product, UUID id){
+        Product existingProduct= repository.findById(id).orElse(null);
+        if (existingProduct != null) {
+            existingProduct.setLabel(product.getLabel());
+            existingProduct.setWeight(product.getWeight());
+            repository.save(existingProduct);
+        }
     }
 }

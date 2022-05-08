@@ -14,7 +14,7 @@ public class ReplyController {
     @Autowired
     private ReplyService service;
 
-    @PostMapping("/addReply")
+    @PostMapping("/reply")
     public Reply addReply(@RequestBody Reply reply) {
         return service.saveReply(reply);
     }
@@ -29,7 +29,7 @@ public class ReplyController {
         return this.service.getReplyById(id);
     }
 
-    @PutMapping("/reply/update")
+    @PutMapping("/reply/{id}")
     public Reply updateReply(@RequestBody Reply reply) {
         return service.updateReply(reply);
     }

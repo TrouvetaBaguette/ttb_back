@@ -31,7 +31,7 @@ public class CommentController {
         return this.service.getCommentById(id);
     }
 
-    @GetMapping("/commentAll/")
+    @GetMapping("/comments/")
     public List<Comment> findCommentAll() {
         return this.service.getCommentByAll();
     }

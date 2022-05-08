@@ -23,7 +23,7 @@ public class BakeryService {
         return repository.save(bakery);
     }
 
-    public Bakery getBakeryById(UUID id) { return repository.findById(id); }
+    public Bakery getBakeryById(UUID id) { return repository.findById(id).orElse(null); }
 
     public Bakery getBakeryByName(String name) {
         return repository.findByName(name);
@@ -33,12 +33,14 @@ public class BakeryService {
         repository.deleteById(id);
     }
 
-    public Bakery updateBakery(Bakery bakery){
-        Bakery existingBakery=repository.findById(bakery.getId());
-        existingBakery.setName(bakery.getName());
-        existingBakery.setAddress(bakery.getAddress());
-        existingBakery.setPhonenumber(bakery.getPhonenumber());
-        existingBakery.setUnsolds(bakery.getProducts());
-        return repository.save(existingBakery);
+    public void updateBakery(Bakery bakery, UUID id){
+        Bakery existingBakery=repository.findById(id).orElse(null);
+        if(existingBakery != null) {
+            existingBakery.setName(bakery.getName());
+            existingBakery.setAddress(bakery.getAddress());
+            existingBakery.setPhonenumber(bakery.getPhonenumber());
+            existingBakery.setUnsolds(bakery.getProducts());
+            repository.save(existingBakery);
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.example.ttbback.entity.Comment;
 import com.example.ttbback.entity.Note;
 import com.example.ttbback.entity.Product;
 import com.example.ttbback.service.ProductService;
+import org.hibernate.cfg.PropertyHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,19 +32,25 @@ public class ProductController {
         return service.saveProduct(product);
     }
 
-    @GetMapping("/productById/{id}")
+    @GetMapping("/product/{id}")
     public Product findProductById(@PathVariable UUID id) {
         return service.getProductById(id);
     }
+
+    @GetMapping("/product")
+    public  List<Product> getAll(){
+        return service.getAll();
+    }
+
 
     @GetMapping("/product/{name}")
     public Product findProductByLabel(@PathVariable String name) {
         return service.getProductByLabel(name);
     }
 
-    @PutMapping("/product/update")
-    public Product updateProduct(@RequestBody Product product) {
-        return service.updateProduct(product);
+    @PutMapping("/product/{id}")
+    public void updateProduct(@RequestBody Product product, UUID id) {
+        service.updateProduct(product,id);
     }
 
     @DeleteMapping("/product/delete/{id}")
