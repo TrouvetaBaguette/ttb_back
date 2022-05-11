@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     @PutMapping("/product/{id}")
-    public void updateProduct(@RequestBody Product product, UUID id) {
+    public void updateProduct(@RequestBody Product product, @PathVariable UUID id) {
         service.updateProduct(product,id);
     }
 

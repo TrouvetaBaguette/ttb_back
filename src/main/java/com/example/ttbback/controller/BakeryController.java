@@ -34,7 +34,7 @@ public class BakeryController {
     }
 
     @PutMapping("/bakery/{id}")
-    public void updateBakery(@RequestBody Bakery bakery, UUID id) {
+    public void updateBakery(@RequestBody Bakery bakery, @PathVariable UUID id) {
         service.updateBakery(bakery,id);
     }
 
