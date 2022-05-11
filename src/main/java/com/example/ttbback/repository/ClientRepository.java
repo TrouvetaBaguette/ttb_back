@@ -14,5 +14,7 @@ public interface ClientRepository extends JpaRepository<Client,Integer>, CrudRep
 
     Client findById(UUID id);
 
+    Client findByEmail(String email);
+
     void deleteById(UUID id);
 }

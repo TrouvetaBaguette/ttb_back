@@ -22,6 +22,10 @@ public class Client {
     UUID id;
     String name;
     String address;
+
+    String email;
+    String password;
+
     //@ElementCollection
     //@CollectionTable(
     //        name="ALLERGIE"

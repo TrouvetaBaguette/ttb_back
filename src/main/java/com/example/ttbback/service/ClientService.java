@@ -35,6 +35,9 @@ public class ClientService {
         repository.deleteById(id);
     }
 
+    public Client getClientByEmail(Client client) {
+        return repository.findByEmail(client.getEmail());
+    }
     public Client updateClient(Client client){
         Client existingClient = repository.findById(client.getId());
         existingClient.setName(client.getName());

@@ -3,6 +3,8 @@ package com.example.ttbback.controller;
 import com.example.ttbback.entity.Client;
 import com.example.ttbback.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -25,6 +27,18 @@ public class ClientController {
     @GetMapping("/ClientById/{id}")
     public Client findClientById(@PathVariable UUID id) {
         return service.getClientById(id);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Client client) {
+        Client tmp = service.getClientByEmail(client);
+
+        if(tmp.getPassword().equals(client.getPassword())){
+            return new ResponseEntity<>(tmp,HttpStatus.ACCEPTED);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @GetMapping("/client/{name}")
