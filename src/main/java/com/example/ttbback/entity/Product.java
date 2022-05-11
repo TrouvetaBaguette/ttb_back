@@ -26,11 +26,7 @@ public class Product {
     private int idbakery;
     private int weight;
     private int price;
-    @OneToMany
-    private List<Ingredient> ingredients = new ArrayList<>();
     private int product_quantity;
-    @OneToMany
-    private List<Comment> comments = new ArrayList<>();
 
 
 

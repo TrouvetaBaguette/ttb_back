@@ -11,7 +11,7 @@ public interface ProductRepository extends JpaRepository<Product,Integer>, CrudR
 
     Product findByLabel(String name);
 
-    Product findById(UUID id);
+    Optional<Product> findById(UUID id);
 
     void deleteById(UUID id);
 }

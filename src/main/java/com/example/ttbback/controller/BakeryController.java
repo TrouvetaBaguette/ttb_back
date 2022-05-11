@@ -18,7 +18,7 @@ public class BakeryController {
         this.service=service;
     }
 
-    @PostMapping("/addBakery")
+    @PostMapping("/bakery")
     public Bakery addBakery(@RequestBody Bakery bakery) {
         return service.saveBakery(bakery);
     }
@@ -33,11 +33,11 @@ public class BakeryController {
         return service.getBakeryByName(name);
     }
 
-    @PutMapping("/bakery/update")
-    public Bakery updateBakery(@RequestBody Bakery bakery) {
-        return service.updateBakery(bakery);
+    @PutMapping("/bakery/{id}")
+    public void updateBakery(@RequestBody Bakery bakery, UUID id) {
+        service.updateBakery(bakery,id);
     }
 
-    @DeleteMapping("/bakery/delete/{id}")
+    @DeleteMapping("/bakery/{id}")
     public void deleteBakery(@PathVariable UUID id) { service.deleteBakery(id); }
 }
