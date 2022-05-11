@@ -2,12 +2,10 @@ package com.example.ttbback.controller;
 
 import com.example.ttbback.entity.Bakery;
 import com.example.ttbback.entity.Comment;
-import com.example.ttbback.entity.Product;
 import com.example.ttbback.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:8081")
@@ -22,14 +20,9 @@ public class CommentController {
         return this.service.saveComment(comment);
     }
 
-    @GetMapping("/comments")
-    public List<Comment> listComment() {
-        return service.getComment();
-    }
-
     @DeleteMapping("/comment/delete/{id}")
     public void deleteComment(@PathVariable UUID id) {
-        this.service.deleteComment(id);
+         this.service.deleteComment(id);
     }
 
     @GetMapping("/commentById/{id}")

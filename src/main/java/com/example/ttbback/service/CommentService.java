@@ -2,14 +2,12 @@ package com.example.ttbback.service;
 
 import com.example.ttbback.entity.Bakery;
 import com.example.ttbback.entity.Comment;
-import com.example.ttbback.entity.Product;
 import com.example.ttbback.entity.Reply;
 import com.example.ttbback.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -24,7 +22,6 @@ public class CommentService {
     public Comment saveComment(Comment comment) {
         return repository.save(comment);
     }
-    public List<Comment> getComment(){ return repository.findAll();}
     public Comment getCommentById(UUID id_comment) { return repository.findById(id_comment); }
     public void deleteComment(UUID id) {
         repository.deleteById(id);
