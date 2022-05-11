@@ -20,7 +20,7 @@ public class ProductController {
         this.service = service;
     }
 
-    @PostMapping("/addProduct")
+    @PostMapping("/product")
     public Product addProduct(@RequestBody Product product) {
         return service.saveProduct(product);
     }
@@ -30,7 +30,7 @@ public class ProductController {
         return service.getProduct();
     }
 
-    @GetMapping("/productById/{id}")
+    @GetMapping("/product/{id}")
     public Product findProductById(@PathVariable UUID id) {
         return service.getProductById(id);
     }
@@ -40,12 +40,12 @@ public class ProductController {
         return service.getProductByLabel(name);
     }
 
-    @PutMapping("/product/update")
-    public Product updateProduct(@RequestBody Product product) {
-        return service.updateProduct(product);
+    @PutMapping("/product/{id}")
+    public void updateProduct(@RequestBody Product product, @PathVariable UUID id) {
+        service.updateProduct(product,id);
     }
 
-    @DeleteMapping("/product/delete/{id}")
+    @DeleteMapping("/product/{id}")
     public void deleteProduct(@PathVariable UUID id) {
         service.deleteProduct(id);
     }

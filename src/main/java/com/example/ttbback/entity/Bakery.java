@@ -22,9 +22,4 @@ public class Bakery {
     String address;
     String phonenumber;
     String Insee;
-    @OneToMany
-    List<Product> products;
-    @OneToMany
-    List<Product> unsolds;
-
 }

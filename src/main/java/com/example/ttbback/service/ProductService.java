@@ -1,5 +1,6 @@
 package com.example.ttbback.service;
 
+import com.example.ttbback.entity.Bakery;
 import com.example.ttbback.entity.Product;
 import com.example.ttbback.repository.ProductRepository;
 import lombok.NoArgsConstructor;
@@ -26,21 +27,26 @@ public class ProductService {
 
     public List<Product> getProduct(){ return repository.findAll();}
 
-    public Product getProductById(UUID id) { return repository.findById(id); }
+    public Product getProductById(UUID id) { return repository.findById(id).orElse(null); }
 
     public Product getProductByLabel(String name) {
         return repository.findByLabel(name);
     }
 
     public void deleteProduct(UUID id) {
-        repository.deleteById(id);
+        Product existingproduct = repository.findById(id).orElse(null);
+        if (existingproduct !=null) {
+            repository.deleteById(existingproduct.getId());
+        }
     }
 
-    public Product updateProduct(Product product){
-        Product existingProduct= repository.findById(product.getId());
-        existingProduct.setLabel(product.getLabel());
-        existingProduct.setPrice(product.getPrice());
-        existingProduct.setWeight(product.getWeight());
-        return repository.save(existingProduct);
+    public void updateProduct(Product product, UUID id){
+        Product existingProduct= repository.findById(id).orElse(null);
+        if(existingProduct != null) {
+            existingProduct.setLabel(product.getLabel());
+            existingProduct.setPrice(product.getPrice());
+            existingProduct.setWeight(product.getWeight());
+            repository.save(existingProduct);
+        }
     }
 }
